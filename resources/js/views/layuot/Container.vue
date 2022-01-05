@@ -1,10 +1,14 @@
 <template>
 <h1 class="container">Vue Router!</h1>
+    <my-button></my-button>
+    <my-input></my-input>
 </template>
 
 <script>
+
+
 export default {
-    name: "Container"
+    name: "Container",
 }
 </script>
 
