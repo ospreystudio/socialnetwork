@@ -1,6 +1,6 @@
 <template>
 <button class="btn">
-    <slots>Регестрация</slots>
+    <slot></slot>
 </button>
 </template>
 

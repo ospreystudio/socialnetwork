@@ -1,14 +1,18 @@
 <template>
 <h1 class="container">Vue Router!</h1>
-    <my-button></my-button>
-    <my-input></my-input>
+    <my-button>регестрация</my-button>
+
 </template>
 
 <script>
 
 
+import MyButton from "../../components/UI/MyButton";
 export default {
     name: "Container",
+    components: {
+        MyButton
+    }
 }
 </script>
 
