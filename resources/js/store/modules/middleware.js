@@ -3,7 +3,7 @@ const state = {
     user: {
         loggedIn: true,
         isSubscribed: true,
-        token: !localStorage.getItem('token') || ''
+        token: localStorage.getItem('token') || ''
     },
 
 }

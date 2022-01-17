@@ -20,11 +20,18 @@ export default {
             password: "",
         }
     }),
+    created() {
+        this.checkUserState()
+    },
     methods: {
         login() {
             this.$store.dispatch('auth/loginUser', this.user)
+        },
+        checkUserState() {
+            this.$store.dispatch('auth/setLoggedInstate', this.user)
         }
-    }
+    },
+
 }
 </script>
 

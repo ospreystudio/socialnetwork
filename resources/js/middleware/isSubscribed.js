@@ -1,4 +1,4 @@
-export default function ({next, store}) {
+export default function isSubscribed ({next, store}) {
 
     if (!store.getters.auth.isSubscribed) {
         return next('dashboard')
