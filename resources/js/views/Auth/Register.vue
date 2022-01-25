@@ -1,5 +1,6 @@
 <template>
     <div>
+        <validation-errors v-if="validationErrors" :errors="validationErrors"></validation-errors>
         <div class="register-page">
             <form class="form">
                 <my-input type="text" placeholder="username" v-model="user.name" />
@@ -14,6 +15,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
     name: "Register",
     data: () => ({
@@ -24,6 +26,11 @@ export default {
             password_confirmation: ""
         }
     }),
+    computed: {
+        ...mapGetters({
+            validationErrors: 'auth/errors'
+        })
+    },
     methods: {
         register() {
             this.$store.dispatch('auth/registerUser', this.user)
@@ -32,7 +39,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .register-page {
     width: 360px;
     padding: 8% 0 0;
