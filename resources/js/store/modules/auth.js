@@ -9,15 +9,15 @@ const state = {
 
 const actions = {
 
-    registerUser(ctx, user) {
+    registerUser(ctx, user, ) {
         return new Promise((resolve, reject) => {
             axios
                 .post('/api/register', {
-                name: user.name,
-                email: user.email,
-                password: user.password,
-                password_confirmation: user.password_confirmation
-            })
+                    name: user.name,
+                    email: user.email,
+                    password: user.password,
+                    password_confirmation: user.password_confirmation
+                })
                 .then(response => {
                     if (response.data) {
                         window.location.replace("/login")
@@ -25,11 +25,11 @@ const actions = {
                     } else  {
                         reject(response)
                     }
-                    }) .catch((error) => {
+                }) .catch((error) => {
                 if (error.response.status === 422) {
                     ctx.commit('setErrors', error.response.data.errors)
-                } console.log(error.response)
-                })
+                } console.log(this.errors)
+            })
         })
     },
 
@@ -41,14 +41,14 @@ const actions = {
                     if (response.data.access_token) {
                         localStorage.setItem('token', response.data.access_token)
                         window.location.replace("/dashboard")
-                }
+                    }
 
-                }).catch((error) => {
-                    if(error.response.data.error) {
-                        ctx.commit('setInvalidCredentials', error.response.data.error)
-                    } else if (error.response.status === 422) {
-                        ctx.commit('setErrors', error.response.data.errors)
-                    } console.log(error.response)
+                }).catch(error => {
+                if(error.response.data.error) {
+                    ctx.commit('setInvalidCredentials', error.response.data.error)
+                }  else if (error.response.status === 422) {
+                    ctx.commit('setErrors', error.response.data.errors)
+                }
             })
 
         })
@@ -73,20 +73,43 @@ const actions = {
                 resolve(false)
             }
         })
-    }
+    },
+
+    forgotPassword(ctx, user, payload) {
+        return new Promise((resolve, reject) => {
+            axios
+                .post('/api/forgot-password', {
+                    email: user.email
+                })
+                .then(response => {
+                    if (response.data) {
+                        window.location.replace("/login")
+                        resolve(response)
+                    } else  {
+                        reject(response)
+                    }
+                })
+                .catch((error) => {
+                    console.log(error.response)
+                    if (error.response.status === 422) {
+                        ctx.commit('setErrors', error.response.data.error)
+                    } else if (error.response.status === 500)
+                        ctx.commit('setInvalidCredentials', error.response.data.error)
+                })
+        })
+    },
 
 }
 const mutations = {
     setLoggedIn(state, payload) {
         state.isLoggedIn = payload
     },
-    setErrors(state, errors) {
-        state.errors = errors;
+    setErrors(state, invalidCredentials) {
+        state.errors = invalidCredentials
     },
-    setInvalidCredentials(state, invalidCredentials) {
+    setInvalidCredentials (state, invalidCredentials) {
         state.invalidCredentials = invalidCredentials
     }
-
 }
 
 const getters = {
@@ -96,6 +119,7 @@ const getters = {
     userDetails(state) {
         return state.userDetails
     },
+
     errors(state) {
         return state.errors
     },
@@ -103,6 +127,7 @@ const getters = {
     invalidCredentials(state) {
         return state.invalidCredentials
     }
+
 }
 
 export default {

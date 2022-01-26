@@ -6,52 +6,69 @@
             Invalid Credentials
         </div>
         <validation-errors v-if="validationErrors" :errors="validationErrors"></validation-errors>
-        <div class="login-page">
+        <div class="reset-page">
             <form class="form">
                 <my-input type="text" placeholder="email address" v-model="user.email"/>
-                <my-input type="password" placeholder="password" v-model="user.password"/>
-                <my-button type="submit" @click.prevent="login" >login</my-button>
-
-                <router-link to="/register"> <p class="message">Not registered? <a href="#">Create an account</a></p> </router-link>
-                <router-link to="/forgot-password" > <p class="message">Forgot your password? <a href="#">Reset password</a></p> </router-link>
+                <my-button type="submit" @click.prevent="sendForgotPassword" >Send email</my-button>
+                <router-link to="/register"> <p class="message">Go to login page <a href="#">Sign In</a></p> </router-link>
             </form>
         </div>
     </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+
+import { mapGetters, mapActions } from 'vuex';
 export default {
-    name: "Login",
+    name: "ForgotPassword",
     data: () => ({
         user: {
             email: "",
-            password: "",
         }
     }),
     computed: {
         ...mapGetters({
             invalidCredentials: 'auth/invalidCredentials',
-            validationErrors: 'auth/errors'
+            validationErrors: 'auth/errors',
         })
     },
     created() {
         this.checkUserState();
     },
     methods: {
-        login() {
-            this.$store.dispatch('auth/loginUser', this.user)
-        },
-        checkUserState() {
-            this.$store.dispatch('auth/setLoggedInstate', this.user)
-        },
+        ...mapActions({
+            checkUserState: 'auth/setLoggedInstate',
+            forgotPassword: 'auth/forgotPassword',
+
+        }),
+        //
+        sendForgotPassword() {
+            this.$store.dispatch('auth/forgotPassword', this.user);
+
+        }
+
+        // sendForgotPassword() {
+        //     if (this.$refs.forgotPasswordForm) {
+        //         this.forgotPassword({email: this.email}).then(() => {
+        //             this.addNotification({
+        //                 text: 'Email sent!',
+        //                 show: true
+        //             });
+        //         }).catch(() => {
+        //             this.addNotification({
+        //                 text: 'Failed to send email!',
+        //                 show: true
+        //             });
+        //         });
+        //     }
+        // }
     },
 }
 </script>
 
 <style lang="scss">
 
-.login-page {
+.reset-page {
     width: 360px;
     padding: 8% 0 0;
     margin: auto;
