@@ -14,7 +14,7 @@ class ForgotPasswordController extends Controller
             'email' => 'required |string | email | max:255',
         ]);
         if ($validator->fails()) {
-            return response(['error' => $validator->errors()->all()], 422);
+            return response(['errors' => $validator->errors()->all()], 422);
         }
 
         $response = $this->broker()->sendResetLink(

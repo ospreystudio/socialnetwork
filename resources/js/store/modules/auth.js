@@ -4,7 +4,8 @@ const state = {
     userDetails: {},
     isLoggedIn: true,
     errors: [],
-    invalidCredentials: ''
+    invalidCredentials: '',
+
 }
 
 const actions = {
@@ -92,7 +93,23 @@ const actions = {
                 .catch((error) => {
                     console.log(error.response)
                     if (error.response.status === 422) {
-                        ctx.commit('setErrors', error.response.data.error)
+                        ctx.commit('setErrors', error.response.data.errors)
+                    } else if (error.response.status === 500)
+                        ctx.commit('setInvalidCredentials', error.response.data.error)
+                })
+        })
+    },
+    resetPassword(ctx, payload) {
+        return new Promise((resolve, reject) => {
+            axios
+                .post('/api/reset-password', payload)
+                .then((response) => {
+                    resolve(response);
+                })
+                .catch((error) => {
+                    console.log(error.response)
+                    if (error.response.status === 422) {
+                        ctx.commit('setErrors', error.response.data.errors)
                     } else if (error.response.status === 500)
                         ctx.commit('setInvalidCredentials', error.response.data.error)
                 })

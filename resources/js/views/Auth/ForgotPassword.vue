@@ -10,7 +10,7 @@
             <form class="form">
                 <my-input type="text" placeholder="email address" v-model="user.email"/>
                 <my-button type="submit" @click.prevent="sendForgotPassword" >Send email</my-button>
-                <router-link to="/register"> <p class="message">Go to login page <a href="#">Sign In</a></p> </router-link>
+                <router-link to="/login"> <p class="message">Go to login page <a href="#">Sign In</a></p> </router-link>
             </form>
         </div>
     </div>
@@ -46,22 +46,6 @@ export default {
             this.$store.dispatch('auth/forgotPassword', this.user);
 
         }
-
-        // sendForgotPassword() {
-        //     if (this.$refs.forgotPasswordForm) {
-        //         this.forgotPassword({email: this.email}).then(() => {
-        //             this.addNotification({
-        //                 text: 'Email sent!',
-        //                 show: true
-        //             });
-        //         }).catch(() => {
-        //             this.addNotification({
-        //                 text: 'Failed to send email!',
-        //                 show: true
-        //             });
-        //         });
-        //     }
-        // }
     },
 }
 </script>
