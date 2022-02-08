@@ -39,8 +39,8 @@ const routes = [
     },
 
     {
-        path: "/dashboard/userprofile",
-        name: "Dashboard.userprofile",
+        path: "/profile",
+        name: UserProfile,
         component: UserProfile,
         // meta: {
         // middleware: [Middleware.auth, Middleware.isSubscribed]

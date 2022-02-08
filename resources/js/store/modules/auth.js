@@ -43,8 +43,8 @@ const actions = {
                         localStorage.setItem('token', response.data.access_token)
                         console.log(response.data.access_token)
                         ctx.commit('setLoggedIn', true)
+                        ctx.dispatch('currentUser').then(() => resolve(response))
                         window.location.replace("/dashboard")
-
                     }
 
                 }).catch(error => {
@@ -121,9 +121,9 @@ const actions = {
 
     currentUser(ctx) {
         return new Promise((resolve, reject) => {
-            axios.get('user')
+            axios.get('/api/user')
                 .then((response) =>{
-                    ctx.commit('setUserDetails', response.data.data)
+                    ctx.commit('setUserDetails', response.data)
                     console.log(response)
                 }).catch((error) => {
                     reject(error)

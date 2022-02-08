@@ -2,11 +2,11 @@
 <div>
     <nav>
         <ul class="navigation">
-            <li><a href="">Profile</a></li>
+           <router-link to="/profile"> <li><a href="">Profile</a></li></router-link>
             <li><a href="">Settings</a></li>
             <li><a href="">My Book</a></li>
         </ul>
-        <div class="button">
+        <div class="buttons">
             <my-button @click="logout" v-if="loggedIn">Logout</my-button>
         </div>
     </nav>
@@ -19,26 +19,31 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
     name: "Dashboard",
     data: () => ({}),
-    mounted() {
-        this.$store.dispatch("auth/currentUser")
+    created() {
+        this.checkUserState();
     },
     computed: {
         ...mapGetters({
-            loggedIn: 'auth/loggedIn'
-        })
+
+            loggedIn: 'auth/loggedIn',
+            // userDetails: "auth/userDetails"
+        }),
     },
     methods: {
         ...mapActions({
-            logout: 'auth/logout'
-        })
-    }
+            logout: 'auth/logout',
+            checkUserState: 'auth/setLoggedInstate',
+        }),
+
+    },
+
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 nav {
     margin: 30px;
-    background-color: var(--color-gray-dark-1);
+    background-color: var(--color-grey-dark-1);
 }
 
 .navigation {
@@ -49,14 +54,15 @@ nav {
         display: inline-block;
         margin-left: 30px;
 
-        &first-child {
+        &:first-child {
             margin: 0;
         }
     }
 }
 
-.button {
-    float: right
+.buttons {
+    float: right;
 }
+
 
 </style>
