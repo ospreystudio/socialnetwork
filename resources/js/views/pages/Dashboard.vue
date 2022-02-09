@@ -1,16 +1,16 @@
 <template>
-<div>
-    <nav>
-        <ul class="navigation">
-           <router-link to="/profile"> <li><a href="">Profile</a></li></router-link>
-            <li><a href="">Settings</a></li>
-            <li><a href="">My Book</a></li>
-        </ul>
-        <div class="buttons">
-            <my-button @click="logout" v-if="loggedIn">Logout</my-button>
-        </div>
-    </nav>
-</div>
+    <div>
+        <nav>
+            <ul class="navigation">
+                <router-link to="/profile"> <li><a href="">Profile</a></li></router-link>
+                <li><a href="">Settings</a></li>
+                <li><a href="">My Book</a></li>
+            </ul>
+            <div class="buttons">
+                <my-button @click="logout" v-if="loggedIn">Logout</my-button>
+            </div>
+        </nav>
+    </div>
 </template>
 
 <script>

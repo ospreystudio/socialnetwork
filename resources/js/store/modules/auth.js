@@ -123,10 +123,10 @@ const actions = {
         return new Promise((resolve, reject) => {
             axios.get('/api/user')
                 .then((response) =>{
-                    ctx.commit('setUserDetails', response.data)
+                    ctx.commit('setUserDetails', response.data.data)
                     console.log(response)
                 }).catch((error) => {
-                    reject(error)
+                reject(error)
             })
         })
     }

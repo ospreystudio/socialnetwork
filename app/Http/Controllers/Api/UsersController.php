@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
-    public function User() {
-        return Auth::user();
+    public function  User()
+    {
+        return new UserResource(Auth::user());
     }
 }
