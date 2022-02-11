@@ -4,8 +4,8 @@
         <div>
             <nav>
                 <ul class="navigation">
-                    <li> <a href="#"> Profile</a>      </li>
-                    <li> <a href="#"> Settings</a>     </li>
+                    <router-link to="/profile"> <li><a href="">Profile</a></li></router-link>
+                    <router-link to="/settings"> <li><a href="">Setting</a></li></router-link>
                     <li> <a href="#"> My Book</a>     </li>
                 </ul>
                 <div class="buttons">

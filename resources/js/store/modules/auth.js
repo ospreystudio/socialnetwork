@@ -129,7 +129,49 @@ const actions = {
                 reject(error)
             })
         })
-    }
+    },
+    changePassword(ctx, payload) {
+        return new Promise((resolve, reject) => {
+            axios
+                .post('/api/change-password', payload)
+                .then((response) => {
+                    if (response.data.success) {
+                        window.location.replace("/login")
+                        resolve(response);
+                    } else {
+                        reject(response);
+                    }
+                })
+                .catch((error) => {
+                    if(error.response.data.error) {
+                        ctx.commit('setInvalidCredentials', error.response.data.error)
+                    }  else if (error.response.status === 422) {
+                        ctx.commit('setErrors', error.response.data.errors)
+                    }
+                })
+        })
+    },
+    updateDetails(ctx, payload) {
+        return new Promise((resolve, reject) => {
+            axios
+                .post('/api/change-details', payload)
+                .then((response) => {
+                    if (response.data.success) {
+                        window.location.replace("/profile")
+                        resolve(response);
+                    } else {
+                        reject(response);
+                    }
+                })
+                .catch((error) => {
+                    if(error.response.data.error) {
+                        ctx.commit('setInvalidCredentials', error.response.data.error)
+                    }  else if (error.response.status === 422) {
+                        ctx.commit('setErrors', error.response.data.errors)
+                    }
+                })
+        })
+    },
 
 }
 const mutations = {

@@ -9,6 +9,7 @@ import store from "../store";
 import middlewarePipeline from "./middlewarePipeline"
 import ForgotPassword from "../views/Auth/ForgotPassword";
 import ResetPassword from "../views/Auth/ResetPassword";
+import Settings from "../views/pages/Settings";
 
 
 const routes = [
@@ -30,6 +31,15 @@ const routes = [
 
     } ,
     {
+        path: "/settings",
+        name: Settings,
+        component: Settings,
+        meta: {
+            middleware: [Middleware.auth]
+        },
+
+    } ,
+    {
         path: "/dashboard",
         name: Dashboard,
         component: Dashboard,
@@ -42,9 +52,9 @@ const routes = [
         path: "/profile",
         name: UserProfile,
         component: UserProfile,
-        // meta: {
-        // middleware: [Middleware.auth, Middleware.isSubscribed]
-        // },
+        meta: {
+        middleware: [Middleware.auth]
+        },
     },
 
     {
