@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Permission;
 use App\Models\Role;
 use Illuminate\Database\Seeder;
 
@@ -15,14 +16,18 @@ class RoleSeeder extends Seeder
     public function run()
     {
         Role::insert([
-           [
+            [
                 "name" => "Developer",
                 "slug" => "developer"
-           ],
+            ],
             [
                 "name" => "Admin",
                 "slug" => "admin"
             ],
         ]);
+
+        $developerRole = Role::developer()->firstOrFail();
+        $developerPermissions = Permission::whereIn('slug', ['view-developer-dashboard'])->get()->pluck('id')->toArray();
+        $developerRole->permissions()->sync($developerPermissions);
     }
 }

@@ -21407,8 +21407,7 @@ var actions = {
           ctx.commit('setLoggedIn', true);
           ctx.dispatch('currentUser').then(function () {
             return resolve(response);
-          });
-          window.location.replace("/dashboard");
+          }); // window.location.replace("/dashboard")
         }
       })["catch"](function (error) {
         if (error.response.data.error) {
