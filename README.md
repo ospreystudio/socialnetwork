@@ -1,4 +1,4 @@
-## About Laravel
+## Social Network
 
 Good day. My name is Justin Moreyl. With a small team of like-mined people, I am writing a social network for poets, writers, screenwriters,
 publicists, and so on. We want to make a lot of useful features for network users such as rating, awards, competitions, the best writer of the month or year, etc.
