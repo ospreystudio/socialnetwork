@@ -21302,6 +21302,10 @@ var routes = [{
       query: route.query.token
     };
   }
+}, {
+  path: '/reset-password/:token',
+  name: 'ResetPassword',
+  component: _views_Auth_ResetPassword__WEBPACK_IMPORTED_MODULE_9__["default"]
 }];
 var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_11__.createRouter)({
   routes: routes,
@@ -21407,7 +21411,8 @@ var actions = {
           ctx.commit('setLoggedIn', true);
           ctx.dispatch('currentUser').then(function () {
             return resolve(response);
-          }); // window.location.replace("/dashboard")
+          });
+          window.location.replace("/dashboard");
         }
       })["catch"](function (error) {
         if (error.response.data.error) {

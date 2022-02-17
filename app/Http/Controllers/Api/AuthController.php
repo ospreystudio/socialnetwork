@@ -21,6 +21,12 @@ class AuthController extends Controller
             return $passportRequest["response"];
         }
 
+        if(empty($tokenContent)) {
+            return response()->json([
+                "message" =>  'Email is required'
+            ]);
+        }
+
 
         return response()->json([
             'error' => 'Invalid credentials'

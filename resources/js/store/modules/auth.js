@@ -44,7 +44,7 @@ const actions = {
                         console.log(response.data.access_token)
                         ctx.commit('setLoggedIn', true)
                         ctx.dispatch('currentUser').then(() => resolve(response))
-                        // window.location.replace("/dashboard")
+                        window.location.replace("/dashboard")
                     }
 
                 }).catch(error => {

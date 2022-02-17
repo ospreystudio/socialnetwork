@@ -72,6 +72,11 @@ const routes = [
 
     } ,
 
+    {   path: '/reset-password/:token',
+        name: 'ResetPassword',
+        component: ResetPassword,
+    },
+
 ]
 
 const router = createRouter({
