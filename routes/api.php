@@ -28,6 +28,6 @@ Route::post('register',[AuthController::class,'register']);
 Route::post('logout',[AuthController::class,'logout']);
 Route::post('forgot-password', [App\Http\Controllers\Api\ForgotPasswordController::class, "sendResetLinkEmail"]);
 Route::post('reset-password', [App\Http\Controllers\Api\ResetPasswordController::class, "reset"]);
-//Route::get('/email-verification', [App\Http\Controllers\Api\VerificationController::class, "verify"])->name('verification.verify');;
+Route::get('/email-verification', [App\Http\Controllers\Api\VerificationController::class, "verify"])->name('verification.verify');
 
 

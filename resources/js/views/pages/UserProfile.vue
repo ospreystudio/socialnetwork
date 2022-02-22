@@ -26,7 +26,7 @@
                 <hr />
                 <h2> Joined: {{ currentUser.created_at}}</h2>
                 <hr />
-                <h2> Joined: {{ currentUser.permissions}}</h2>
+
 
 
             </div>

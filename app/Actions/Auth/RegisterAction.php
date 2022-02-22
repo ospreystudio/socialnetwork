@@ -22,7 +22,7 @@ class RegisterAction
 
         $user->roles()->attach($developerRole->id);
 
-//        $user->sendEmailVerificationNotification();
+        $user->sendEmailVerificationNotification();
 
 
         return $user;
