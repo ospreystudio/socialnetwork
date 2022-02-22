@@ -16,7 +16,7 @@ class UserResource extends JsonResource
     {
         $userRoles = $this->roles()->with('permissions')->get();
         $roles = $userRoles->pluck('slug');
-        $rolesPermissions = $userRoles->pluck('permissions')->flatten(1)->pluck('slug');
+        $rolesPermissions = $userRoles->pluck('permissions')->flatten(2)->pluck('slug');
         $userPermissions = $rolesPermissions->merge($this->permissions->pluck('slug'));
 
         return [
@@ -25,6 +25,7 @@ class UserResource extends JsonResource
             "created_at" => $this->created_at->format('Y-m-d'),
             "roles" => $roles,
             "permissions" => $userPermissions,
+
         ];
     }
 }

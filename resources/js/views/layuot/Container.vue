@@ -12,7 +12,7 @@ export default {
     name: "Container",
     components: {
         MyButton
-    }
+    },
 }
 </script>
 

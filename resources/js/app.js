@@ -21,6 +21,7 @@ const app = createApp({});
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
+
 components.forEach(component => {
     app.component(component.name, component)
 })

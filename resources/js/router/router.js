@@ -10,6 +10,7 @@ import middlewarePipeline from "./middlewarePipeline"
 import ForgotPassword from "../views/Auth/ForgotPassword";
 import ResetPassword from "../views/Auth/ResetPassword";
 import Settings from "../views/pages/Settings";
+import middleware from "../store/modules/middleware";
 
 
 const routes = [
@@ -37,6 +38,7 @@ const routes = [
         meta: {
             middleware: [Middleware.auth]
         },
+        roles: ['admin']
 
     } ,
     {
@@ -44,8 +46,10 @@ const routes = [
         name: Dashboard,
         component: Dashboard,
         meta: {
-            middleware: [Middleware.auth]
+            middleware: [Middleware.auth, Middleware.checkRole]
         },
+        roles: ['admin']
+
     },
 
     {
@@ -53,8 +57,13 @@ const routes = [
         name: UserProfile,
         component: UserProfile,
         meta: {
-        middleware: [Middleware.auth]
+        middleware: [Middleware.auth,  Middleware.admin]
         },
+        // beforeEnter: (to, from, next) => {
+        //     if (store.getters["auth/isAdmin"]) next();
+        //     else next(false);
+        // }
+
     },
 
     {

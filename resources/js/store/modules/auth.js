@@ -186,7 +186,7 @@ const mutations = {
     },
     setUserDetails(state, payload) {
         state.userDetails = payload
-    }
+    },
 }
 
 const getters = {
@@ -203,6 +203,9 @@ const getters = {
 
     invalidCredentials(state) {
         return state.invalidCredentials
+    },
+    isAdmin(state) {
+        return state.userDetails ? state.userDetails.roles : false;
     }
 
 }

@@ -26,7 +26,7 @@ export default {
         ...mapGetters({
 
             loggedIn: 'auth/loggedIn',
-            // userDetails: "auth/userDetails"
+            userDetails: "auth/userDetails",
         }),
     },
     methods: {

@@ -13,14 +13,14 @@ class LoginAction
     public function run($request)
     {
 
-        $user = User::where('email', $request['email'])->where('email_verified_at', '<>', NULL)->first();
-
-        if (!$user) {
-            return [
-                "response" => 'Email is not verified',
-                "content" => ''
-            ];
-        }
+//        $user = User::where('email', $request['email'])->where('email_verified_at', '<>', NULL)->first();
+//
+//        if (!$user) {
+//            return [
+//                "response" => 'Email is not verified',
+//                "content" => ''
+//            ];
+//        }
 
         $passwordGrantClient = Client::where('password_client', 1)->first();
 
