@@ -2,7 +2,7 @@ import auth from "./auth";
 import guest from './guest'
 import isSubscribed from './isSubscribed'
 import admin from './admin'
-import checkRole from "./checkRoles";
+
 
 
 export default {
@@ -10,5 +10,5 @@ export default {
     guest,
     isSubscribed,
     admin,
-    checkRole
+
 }
