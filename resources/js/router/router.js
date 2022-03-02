@@ -11,6 +11,7 @@ import ForgotPassword from "../views/Auth/ForgotPassword";
 import ResetPassword from "../views/Auth/ResetPassword";
 import Settings from "../views/pages/Settings";
 import VerifyEmail from "../views/Auth/VerifyEmail";
+import Chat from "../views/pages/Chat/Chat";
 
 
 
@@ -47,7 +48,7 @@ const routes = [
         name: Dashboard,
         component: Dashboard,
         meta: {
-            middleware: [Middleware.auth, Middleware.checkRole]
+            middleware: [Middleware.auth]
         },
         roles: ['admin']
 
@@ -89,6 +90,10 @@ const routes = [
     {   path: '/verify-email',
         name: 'VerifyEmail',
         component: VerifyEmail,
+    },
+    {   path: '/chat',
+        name: 'Chat',
+        component: Chat,
     },
 
 

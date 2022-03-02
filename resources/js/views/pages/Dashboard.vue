@@ -2,9 +2,16 @@
     <div>
         <nav>
             <ul class="navigation">
-                <router-link to="/profile"> <li><a href="">Profile</a></li></router-link>
-                <router-link to="/settings"> <li><a href="">Setting</a></li></router-link>
-                <li><a href="">My Book</a></li>
+                <nav>
+                    <ul class="navigation">
+                        <router-link to="/profile"> <li><a href="">Profile</a></li></router-link>
+                        <router-link to="/settings"> <li><a href="">Settings</a></li></router-link>
+                        <router-link to="/chat"> <li><a href="">Chat</a></li></router-link>
+                    </ul>
+                    <div class="buttons">
+                        <my-button @click="logout" v-if="loggedIn">Logout </my-button>
+                    </div>
+                </nav>
             </ul>
             <div class="buttons">
                 <my-button @click="logout" v-if="loggedIn">Logout</my-button>
@@ -24,7 +31,6 @@ export default {
     },
     computed: {
         ...mapGetters({
-
             loggedIn: 'auth/loggedIn',
             userDetails: "auth/userDetails",
         }),
