@@ -9,10 +9,6 @@ Now I am quietly writing lessons - the first steps to implement a social network
 
 <p align="center"><a href="https://yapx.ru/v/Qoo4r"><img src="https://i.yapx.ru/Qoo4r.jpg"></a></p>
 
-<p align="center">
-<a href="https://www.youtube.com/channel/UCxdlv-lToPFn3xflN2ChRYA/videos"><img src="https://i.yapx.ru/QoqIW.png" ></a>
-<a href="https://t.me/ospreystudio"><img src="https://i.yapx.ru/QoqZH.png" ></a>
-</p>
 
 ## To implement our project, we use the following programming stacks:
 
